@@ -11,7 +11,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const ejsMate = require('ejs-mate');
-const session = require('express-session');
+const session = require('cookie-session');
 const flash = require('connect-flash');
 const { emailSchema } = require('./schemas.js')
 const catchAsync = require('./utils/catchAsync');
@@ -168,7 +168,7 @@ app.post('/sendEmail', validateEmail, limiter, catchAsync(async (req,res, next) 
             console.log(error)    
         } else{ console.log("Email send: " + info.response)}
     });
-    req.flash('success', 'Message recieved!');   
+    req.flash('success', 'Message received!');   
     res.redirect("/");
 }));
 
