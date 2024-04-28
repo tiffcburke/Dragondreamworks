@@ -4,6 +4,7 @@ if(process.env.NODE_ENV !== "production") {
 const SERVICE_G = process.env.SERVICE_G;
 const U_NAME = process.env.U_NAME;
 const P_WORD = process.env.P_WORD;
+const SESSION_SAM = process.env.SESSION_SECRET;
 
 
 const express = require('express');
@@ -22,13 +23,13 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/dragon');
+// mongoose.connect('mongodb://127.0.0.1:27017/dragon');
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-    console.log("Database connected");
-});
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", () => {
+//     console.log("Database connected");
+// });
 
 const nodemailer = require('nodemailer');
 const http = require('http');
@@ -41,12 +42,12 @@ app.use(express.static('public'));
 
 const sessionConfig = {
     name: 'ses',
-    secret: 'thisshouldbeabettersecret!',
+    secret: SESSION_SAM,
     resave: false,
     saveUninitialized: true,
     cookie:{
         httpOnly: true,
-        //secure: true,
+        secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
