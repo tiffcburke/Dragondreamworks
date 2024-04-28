@@ -1,0 +1,59 @@
+<% layout('./layouts/boilerplate') %>
+
+
+<div class="container row justify-content-center">
+    <div class="col-10 col-md-6 justify-content-center">
+    <p class="title mt-3 text-center">Commissions</p>
+
+    <div>
+    <p class="drag mt-3">OPEN FOR 2024</p> 
+    <p class="small text-center">
+        We are a commission based business which means we thrive off of your ideas and support. Fill out the form below to request a custom work of art. Provide as much detail as you'd like.
+    </p>
+    </div>
+
+    <form action="/sendEmail" method="POST" novalidate class="validated-form" enctype="application/x-www-form-urlencoded">
+        <div class="mb-3 mt-4">
+            <label class="drag2 form-label" for="title">Project name:</label>
+            <input class="form-control" type="text" id="title" name="title" required>
+            <div class="valid-feedback"> Dragons Approve!</div>
+        </div>
+        <div class="mb-3">
+            <label class="drag2 form-label" for="deadline">Add a deadline:</label>
+            <p class="small">Let us know if you have a deadline in mind so we know how to prioritize your order.</p>
+            <input class="form-control" type="text" id="deadline" name="deadline" required>
+            <div class="valid-feedback"> Dragons Approve!</div>
+        </div>
+        <div class=" mb-3">
+            <label class="drag2 form-label" for="description">Describe your idea:</label>
+            <textarea class="form-control" type="text" id="description"  rows="6" name="description" required></textarea>
+            <div class="valid-feedback"> Dragons Approve!</div>
+        </div>
+        <div class=" mb-3">
+            <label class="drag2 form-label" for="purpose">Purpose:</label>
+            <p class="small">If your idea has a certain purpose or meaning behind it, we would love to hear more about the inspiration!</p>
+            <textarea class="form-control" type="text" id="purpose" rows="6" name="purpose" required></textarea>
+            <div class="valid-feedback"> Dragons Approve!</div>
+        </div>
+         <div class="mb-3">
+            <label class="drag2 form-label" for="budget">Budget:</label>
+            <p class="small">If you would like us to stay within a budget, let us know and we can work around your preferences.</p>
+            <input class="form-control" type="text" id="budget" name="budget" required>
+            <div class="valid-feedback"> Dragons Approve!</div>
+        </div>
+        <div class="mb-3">
+            <label class="drag2 form-label" for="name">Your name:</label>
+            <input class="form-control" type="text" id="name" name="name" required>
+            <div class="valid-feedback"> Dragons Approve!</div>
+        </div>
+        <div class="mb-3">
+            <label class="drag2 form-label" for="email">Your email:</label>
+            <input class="form-control" type="email" id="email" name="email" required>
+            <div class="valid-feedback"> Dragons Approve!</div>
+        </div>
+        <button class="btn btn-secondary">Submit</button>
+    </form>
+
+<p class="small mt-4">Thank you so much for your support! We will review and respond to you shortly via email. </p>
+
+
