@@ -53,7 +53,7 @@ app.use(express.static('public'));
 //     }
 // };
 
-app.use(session(sessionConfig));
+// app.use(session(sessionConfig));
 app.use(flash());
 app.use(mongoSanitize());
 app.use(helmet());
@@ -101,10 +101,10 @@ app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use((req,res,next) =>{
-    res.locals.success = req.flash('success');
-    next();
-})
+// app.use((req,res,next) =>{
+//     res.locals.success = req.flash('success');
+//     next();
+// })
 
 const validateEmail = (req, res, next) =>{
     const { error } = emailSchema.validate(req.body);
