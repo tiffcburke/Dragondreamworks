@@ -4,14 +4,14 @@ if(process.env.NODE_ENV !== "production") {
 const SERVICE_G = process.env.SERVICE_G;
 const U_NAME = process.env.U_NAME;
 const P_WORD = process.env.P_WORD;
-const SESSION_SAM = process.env.SESSION_SECRET;
+const SESSION_SECRET = process.env.SESSION_SECRET;
 
 
 const express = require('express');
 const app = express();
 const path = require('path');
 const ejsMate = require('ejs-mate');
-const session = require('cookie-session');
+const session = require('express-session');
 const flash = require('connect-flash');
 const { emailSchema } = require('./schemas.js')
 const catchAsync = require('./utils/catchAsync');
@@ -42,7 +42,7 @@ app.use(express.static('public'));
 
 const sessionConfig = {
     name: 'ses',
-    secret: SESSION_SAM,
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie:{
