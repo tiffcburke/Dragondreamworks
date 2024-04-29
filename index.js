@@ -11,7 +11,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const ejsMate = require('ejs-mate');
-const session = require('express-session');
+// const session = require('express-session');
 const flash = require('connect-flash');
 const { emailSchema } = require('./schemas.js')
 const catchAsync = require('./utils/catchAsync');
@@ -40,18 +40,18 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(express.static('public'));
 
-const sessionConfig = {
-    name: 'ses',
-    secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie:{
-        httpOnly: true,
-        secure: true,
-        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 * 60 * 60 * 24 * 7
-    }
-};
+// const sessionConfig = {
+//     name: 'ses',
+//     secret: SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie:{
+//         httpOnly: true,
+//         secure: true,
+//         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+//         maxAge: 1000 * 60 * 60 * 24 * 7
+//     }
+// };
 
 app.use(session(sessionConfig));
 app.use(flash());
@@ -168,7 +168,7 @@ app.post('/sendEmail', validateEmail, limiter, catchAsync(async (req,res, next) 
             console.log(error)    
         } else{ console.log("Email send: " + info.response)}
     });
-    req.flash('success', 'Message received!');   
+    // req.flash('success', 'Message received!');   
     res.redirect("/");
 }));
 
