@@ -38,7 +38,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 // app.use(express.static(path.join(__dirname, "views/contact")));
 
-app.use(express.static('public'));
+//heroku I added __dirname, might need to delete
+app.use(express.static(__dirname + 'public'));
 
 // const sessionConfig = {
 //     name: 'ses',
@@ -100,6 +101,9 @@ app.use(
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+//heroku github
+app.set('port', (process.env.PORT || 3000))
+
 
 // app.use((req,res,next) =>{
 //     res.locals.success = req.flash('success');
